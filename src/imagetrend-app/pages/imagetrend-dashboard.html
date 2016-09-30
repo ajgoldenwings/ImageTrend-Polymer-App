@@ -1,0 +1,121 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-card/paper-card.html">
+
+<dom-module id="imagetrend-dashboard">
+    <template>
+        <style>
+            paper-card {
+                --paper-card-header-color: white;
+                margin-bottom:1em;
+            }
+        </style>
+
+        <h2>Links</h2>
+
+        <paper-button raised on-click="_incident">New Incident</paper-button>
+        <paper-button raised on-click="_list">Patient List</paper-button>
+        <paper-button raised on-click="_settings">Settings</paper-button>
+
+        <h2>Dashboard</h2>
+
+        <paper-card heading="Incident Photo" image="http://lorempixel.com/350/150/" alt="Incident Photo">
+            <div class="card-content">
+                Lorem ipsum dolor sit amet, no aperiri tibique has, at quo maiorum salutandi concludaturque.
+            </div>
+            <div class="card-actions">
+                <paper-button>Review</paper-button>
+                <paper-button>Action</paper-button>
+            </div>
+        </paper-card>
+
+        <paper-card heading="Incident Photo" image="http://lorempixel.com/350/149/" alt="Incident Photo">
+            <div class="card-content">
+                Lorem ipsum dolor sit amet, no aperiri tibique has, at quo maiorum salutandi concludaturque.
+            </div>
+            <div class="card-actions">
+                <paper-button>Review</paper-button>
+                <paper-button>Action</paper-button>
+            </div>
+        </paper-card>
+
+        <paper-card heading="Incident Photo" image="http://lorempixel.com/350/148/" alt="Incident Photo">
+            <div class="card-content">
+                Lorem ipsum dolor sit amet, no aperiri tibique has, at quo maiorum salutandi concludaturque.
+            </div>
+            <div class="card-actions">
+                <paper-button>Review</paper-button>
+                <paper-button>Action</paper-button>
+            </div>
+        </paper-card>
+
+        <paper-card heading="Incident Photo" image="http://lorempixel.com/350/147/" alt="Incident Photo">
+            <div class="card-content">
+                Lorem ipsum dolor sit amet, no aperiri tibique has, at quo maiorum salutandi concludaturque.
+            </div>
+            <div class="card-actions">
+                <paper-button>Review</paper-button>
+                <paper-button>Action</paper-button>
+            </div>
+        </paper-card>
+
+        <paper-card heading="Incident Photo" image="http://lorempixel.com/350/146/" alt="Incident Photo">
+            <div class="card-content">
+                Lorem ipsum dolor sit amet, no aperiri tibique has, at quo maiorum salutandi concludaturque.
+            </div>
+            <div class="card-actions">
+                <paper-button>Review</paper-button>
+                <paper-button>Action</paper-button>
+            </div>
+        </paper-card>
+
+        <paper-card heading="Incident Photo" image="http://lorempixel.com/350/145/" alt="Incident Photo">
+            <div class="card-content">
+                Lorem ipsum dolor sit amet, no aperiri tibique has, at quo maiorum salutandi concludaturque.
+            </div>
+            <div class="card-actions">
+                <paper-button>Review</paper-button>
+                <paper-button>Action</paper-button>
+            </div>
+        </paper-card>
+
+        <paper-card heading="Incident Photo" image="http://lorempixel.com/350/144/" alt="Incident Photo">
+            <div class="card-content">
+                Lorem ipsum dolor sit amet, no aperiri tibique has, at quo maiorum salutandi concludaturque.
+            </div>
+            <div class="card-actions">
+                <paper-button>Review</paper-button>
+                <paper-button>Action</paper-button>
+            </div>
+        </paper-card>
+
+        <br>
+
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'imagetrend-dashboard',
+
+            properties: {
+                page: {
+                    type: String
+                }
+            },
+            
+            _incident: function() {
+                this.fire('App', {typeFire: 'setPage', page: 'incident-page'});
+            },
+            
+            _list: function() {
+                this.fire('App', {typeFire: 'setPage', page: 'list'});
+            },
+            
+            _settings: function() {
+                this.fire('App', {typeFire: 'setPage', page: 'settings'});
+            }
+
+        });
+    </script>
+</dom-module>

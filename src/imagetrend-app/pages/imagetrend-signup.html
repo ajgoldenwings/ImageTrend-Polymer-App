@@ -1,0 +1,42 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="imagetrend-signup">
+    <template>
+        <style>
+
+        </style>
+
+        <h2>Sign Up</h2>
+
+        <paper-input label="Your Username"></paper-input>
+        <paper-input label="Your Password" type="password"></paper-input>
+        <paper-input label="Confirm Your Password" type="password"></paper-input>
+        <paper-button raised on-click="_signUp">Sign Up</paper-button>
+        <paper-button on-click="_signOn">Go Sign On</paper-button>
+
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'imagetrend-signup',
+
+            properties: {
+                page: {
+                    type: String
+                }
+            },
+            
+            _signOn: function() {
+                this.fire('App', {typeFire: 'setPage', page: 'signOn'});
+            },
+            
+            _signUp: function() {
+                this.fire('App', {typeFire: 'setPage', page: 'dashboard'});
+            }
+
+        });
+    </script>
+</dom-module>

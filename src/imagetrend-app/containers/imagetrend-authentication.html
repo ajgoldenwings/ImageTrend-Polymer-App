@@ -1,0 +1,34 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../pages/imagetrend-signon.html">
+<link rel="import" href="../pages/imagetrend-signup.html">
+
+<dom-module id="imagetrend-authentication">
+    <template>
+        <style>
+
+        </style>
+
+        <iron-pages role="main" selected="[[page]]" 
+            attr-for-selected="name" selected-attribute="visible">
+            <imagetrend-signon name="signon"></imagetrend-signon>
+            <imagetrend-signup name="signup"></imagetrend-signup>
+        </iron-pages>
+
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'imagetrend-authentication',
+
+            properties: {
+                page: {
+                    type: String,
+                    reflectToAttribute: true
+                }
+            }
+
+        });
+    </script>
+</dom-module>

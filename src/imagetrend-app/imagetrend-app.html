@@ -1,0 +1,117 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="containers/imagetrend-incident.html">
+<link rel="import" href="containers/imagetrend-main.html">
+<link rel="import" href="containers/imagetrend-authentication.html">
+
+<dom-module id="imagetrend-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <app-location route="{{route}}"></app-location>
+    <app-route route="{{route}}" pattern="/:page" data="{{data}}" tail="{{tail}}"></app-route>
+
+    <iron-pages selected="[[getContainer]]" attr-for-selected="name">
+      <imagetrend-main name="main" page="[[page]]"></imagetrend-main>
+      <imagetrend-incident name="incident"></imagetrend-incident>
+      <imagetrend-authentication name="authentication" page="[[page]]"></imagetrend-authentication>
+    </iron-pages>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'imagetrend-app',
+
+      properties: {
+        getContainer: {
+          type: String
+        },
+
+        page: {
+          type: String,
+          reflectToAttribute: true,
+          observer: '_pageChanged'
+        },
+
+        authenticationPages: {
+          type: Object,
+          value: ['signon','signup']
+        },
+
+        mainPages: {
+          type: Object,
+          value: ['dashboard','settings','list']
+        },
+
+        incidentPages: {
+          type: Object,
+          value: ['incident-page']
+        }
+      },
+
+      observers: [
+        '_routePageChanged(data.page)'
+      ],
+
+      ready: function() {
+        this.addEventListener('App', this._fireAction);
+      },
+      
+      _fireAction: function(event) {
+        switch(event.type) {
+          case 'App': this._fireActionApp(event.detail.typeFire, event.detail);break;
+          default:console.error('There was no matching details for the event that was listened by the app.', event);
+        }
+      },
+
+      _fireActionApp: function(type) {
+        switch(type) {
+          case 'setPage': this.set('route.path', '/'+event.detail.page); break;
+          default:console.error('There was no matching function for the app event.', event);
+        }
+      },
+
+      _getContainerValue: function(page) {
+        var value;
+        if (this.mainPages.indexOf(page) != -1) {
+          value = 'main';
+        } else if (this.incidentPages.indexOf(page) != -1) {
+          value = 'incident';
+        } else  {
+          value = 'authentication';
+        }
+        return value;
+      },
+
+      _getIronPageValue: function(page) {
+        if (this.mainPages.indexOf(page) == -1 && this.authenticationPages.indexOf(page) == -1 && this.incidentPages.indexOf(page) == -1) {
+          page = 'signon';
+          this.set('route.path', '/signon');
+        }
+        return page || 'signon';
+      },
+
+      _pageChanged: function(page, oldPage) {
+        if (page == null) {
+          this.importHref(
+            this.resolveUrl('pages/imagetrend-' + page + '.html'),
+            function() {}, null, true);
+        }
+      },
+
+      _routePageChanged: function(page) {
+        this.page = this._getIronPageValue(page);
+        this.getContainer = this._getContainerValue(this.page);
+      },
+
+    });
+  </script>
+</dom-module>

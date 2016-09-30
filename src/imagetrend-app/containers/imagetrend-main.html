@@ -1,0 +1,67 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../../bower_components/paper-menu-button/paper-menu-button.html">
+<link rel="import" href="../pages/imagetrend-dashboard.html">
+<link rel="import" href="../pages/imagetrend-list.html">
+<link rel="import" href="../pages/imagetrend-settings.html">
+
+<dom-module id="imagetrend-main">
+    <template>
+        <style>
+            paper-toolbar.red {
+                --paper-toolbar-background: transparent;
+                --paper-toolbar-color: red;
+                --paper-toolbar-title: {
+                    font-style: italic;
+                    font-weight: bold;
+                }; margin-left: -1em;
+            }
+        </style>
+
+        <paper-toolbar class="red">
+            <paper-menu-button>
+                <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
+                <paper-menu class="dropdown-content">
+                    <paper-item on-click="_dashboard">Dashboard</paper-item>
+                    <paper-item on-click="_list">Patient List</paper-item>
+                    <paper-item on-click="_settings">Settings</paper-item>
+                </paper-menu>
+            </paper-menu-button>
+            <span><b>ImageTrend Polymer Platform</b></span>
+        </paper-toolbar>
+
+        <iron-pages role="main" selected="[[page]]" attr-for-selected="name" selected-attribute="visible">
+            <imagetrend-dashboard name="dashboard"></imagetrend-dashboard>
+            <imagetrend-list name="list"></imagetrend-list>
+            <imagetrend-settings name="settings"></imagetrend-settings>
+        </iron-pages>
+
+    </template>
+
+    <script>
+        Polymer({
+            is: 'imagetrend-main',
+
+            properties: {
+                page: {
+                    type: String,
+                    reflectToAttribute: true
+                }
+            },
+            
+            _dashboard: function() {
+                this.fire('App', {typeFire: 'setPage', page: 'incident-page'});
+            },
+            
+            _list: function() {
+                this.fire('App', {typeFire: 'setPage', page: 'list'});
+            },
+            
+            _settings: function() {
+                this.fire('App', {typeFire: 'setPage', page: 'settings'});
+            }
+        });
+    </script>
+</dom-module>

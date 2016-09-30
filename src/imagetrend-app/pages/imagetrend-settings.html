@@ -1,0 +1,38 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="imagetrend-settings">
+    <template>
+        <style>
+
+        </style>
+
+        <h2>Settings</h2>
+        <paper-button raised on-click="_logoff">Logoff</paper-button>
+        <hr>
+        <paper-button raised on-click="_dashboard">Back to Dashboard</paper-button>
+
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'imagetrend-settings',
+
+            properties: {
+                page: {
+                    type: String
+                }
+            },
+
+            _dashboard: function() {
+                this.fire('App', {typeFire: 'setPage', page: 'dashboard'});
+            },
+
+            _logoff: function() {
+                this.fire('App', {typeFire: 'setPage', page: 'signon'});
+            }
+
+        });
+    </script>
+</dom-module>

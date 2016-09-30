@@ -1,0 +1,43 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="imagetrend-signon">
+    <template>
+        <style>
+
+        </style>
+
+        <h2>Sign On</h2>
+
+        <paper-input label="Username"></paper-input>
+        <paper-input label="Password" type="password"></paper-input>
+        <paper-button raised on-click="_signOn">Sign On</paper-button>
+        <!--This demonstraits the slowness if we reload the page-->
+        <!--<paper-button raised onclick="window.location.href = '/dashboard';">Sign On</paper-button>-->
+        <paper-button on-click="_signUp">Go Sign Up</paper-button>
+
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'imagetrend-signon',
+
+            properties: {
+                page: {
+                    type: String
+                }
+            },
+            
+            _signOn: function() {
+                this.fire('App', {typeFire: 'setPage', page: 'dashboard'});
+            },
+            
+            _signUp: function() {
+                this.fire('App', {typeFire: 'setPage', page: 'signup'});
+            }
+
+        });
+    </script>
+</dom-module>

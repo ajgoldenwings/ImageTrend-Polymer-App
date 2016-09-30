@@ -1,0 +1,62 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../../../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../bower_components/paper-material/paper-material.html">
+
+<dom-module id="imagetrend-incident-page">
+    <template>
+        <style>
+            paper-material { padding: 1em; margin-bottom: 1.5em; }
+        </style>
+
+        <h2>New Incident Form</h2>
+        <paper-material>
+            <paper-material><paper-input label="Full Name"></paper-input></paper-material>
+
+            <paper-material>
+                <paper-dropdown-menu label="Age">
+                    <paper-listbox class="dropdown-content">
+                        <paper-item>1</paper-item><paper-item>2</paper-item><paper-item>3</paper-item><paper-item>4</paper-item><paper-item>5</paper-item><paper-item>6</paper-item><paper-item>7</paper-item><paper-item>8</paper-item><paper-item>9</paper-item><paper-item>10</paper-item><paper-item>11</paper-item><paper-item>12</paper-item><paper-item>13</paper-item><paper-item>14</paper-item><paper-item>15</paper-item><paper-item>16</paper-item><paper-item>17</paper-item><paper-item>18</paper-item><paper-item>19</paper-item><paper-item>20</paper-item><paper-item>21</paper-item><paper-item>22</paper-item><paper-item>23</paper-item><paper-item>24</paper-item><paper-item>25</paper-item><paper-item>26</paper-item><paper-item>27</paper-item><paper-item>28</paper-item><paper-item>29</paper-item><paper-item>30</paper-item><paper-item>31</paper-item><paper-item>32</paper-item><paper-item>33</paper-item><paper-item>34</paper-item><paper-item>35</paper-item><paper-item>36</paper-item><paper-item>37</paper-item><paper-item>38</paper-item><paper-item>39</paper-item><paper-item>40</paper-item><paper-item>41</paper-item><paper-item>42</paper-item><paper-item>43</paper-item><paper-item>44</paper-item><paper-item>45</paper-item><paper-item>46</paper-item><paper-item>47</paper-item><paper-item>48</paper-item><paper-item>49</paper-item><paper-item>50</paper-item><paper-item>51</paper-item><paper-item>52</paper-item><paper-item>53</paper-item><paper-item>54</paper-item><paper-item>55</paper-item><paper-item>56</paper-item><paper-item>57</paper-item><paper-item>58</paper-item><paper-item>59</paper-item><paper-item>60</paper-item><paper-item>61</paper-item><paper-item>62</paper-item><paper-item>63</paper-item><paper-item>64</paper-item><paper-item>65</paper-item><paper-item>66</paper-item><paper-item>67</paper-item><paper-item>68</paper-item><paper-item>69</paper-item><paper-item>70</paper-item><paper-item>71</paper-item><paper-item>72</paper-item><paper-item>73</paper-item><paper-item>74</paper-item><paper-item>75</paper-item><paper-item>76</paper-item><paper-item>77</paper-item><paper-item>78</paper-item><paper-item>79</paper-item><paper-item>80</paper-item><paper-item>81</paper-item><paper-item>82</paper-item><paper-item>83</paper-item><paper-item>84</paper-item><paper-item>85</paper-item><paper-item>86</paper-item><paper-item>87</paper-item><paper-item>88</paper-item><paper-item>89</paper-item><paper-item>90</paper-item><paper-item>91</paper-item><paper-item>92</paper-item><paper-item>93</paper-item><paper-item>94</paper-item><paper-item>95</paper-item><paper-item>96</paper-item><paper-item>97</paper-item><paper-item>98</paper-item><paper-item>99</paper-item>
+                    </paper-listbox>
+                </paper-dropdown-menu>
+            </paper-material>
+
+            <paper-material>
+                Gender: 
+                <paper-radio-button>Male</paper-radio-button>
+                <paper-radio-button>Female</paper-radio-button>
+            </paper-material>
+
+            <paper-material><paper-textarea label="What Happened?"></paper-textarea></paper-material>
+
+        </paper-material>
+
+        <br><br>
+
+        <paper-material>
+            <paper-button raised on-click="_dashboard">Submit</paper-button>
+            <paper-button on-click="_dashboard">Cancel</paper-button>
+        </paper-material>
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'imagetrend-incident-page',
+
+            properties: {
+                page: {
+                    type: String
+                }
+            },
+            
+            _dashboard: function() {
+                this.fire('App', {typeFire: 'setPage', page: 'dashboard'});
+            }
+
+        });
+    </script>
+</dom-module>

@@ -1,0 +1,7 @@
+{
+  "name": "ImageTrend Polymer Framework",
+  "short_name": "ImageTrend Polymer Framework",
+  "description": "This is the start of the ImageTrend Polymer Framework",
+  "start_url": "/",
+  "display": "standalone"
+}
